@@ -21,10 +21,10 @@ const toggleLike=async(Model,resourceId,userId) => {
     try {
         if(isLiked){
             response=await Like.deleteOne({[resourceField]:resourceId, likedBy:userId});
-            //await Model.findByIdAndUpdate(resourceId,{$inc:{likes:-1}})
+            await Model.findByIdAndUpdate(resourceId,{$inc:{likes:-1}})
         }else{
             response=await Like.create({[resourceField]:resourceId, likedBy:userId});
-            //await Model.findByIdAndUpdate(resourceId,{$inc:{likes:1}})
+            await Model.findByIdAndUpdate(resourceId,{$inc:{likes:1}})
         }
     } catch (error) {
         console.log(error)
